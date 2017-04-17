@@ -45,7 +45,7 @@ def identify_duplicates(host, endpoint, es_response):
 def deduplicate():
     for host in ssh_hosts:
         print "Host: %s" % host
-        for endpoint in es_endpoints:
+        for endpoint, unique_key in endpoints.iteritems():
             print "Endpoint: %s" % endpoint
             query = "curl -XGET \'%(es_host)s%(endpoint)s/_search\'" \
             " -d \'{\"size\":0, \"aggs\": { \"duplicateCount\":{ \"terms\": " \
@@ -80,9 +80,8 @@ if __name__ == '__main__':
     ssh_user = config_json["sshUser"]
     ssh_hosts = config_json["sshHosts"]
     es_host = config_json["esHost"]
-    es_endpoints = config_json["esEndpoints"]
-    unique_key = config_json["uniqueKey"]
-    
+    endpoints = config_json["endpoints"]
+
     exit_code = 0
     
     deduplicate()

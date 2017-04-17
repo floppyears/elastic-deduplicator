@@ -4,6 +4,5 @@
         "host.com",
         "another.host.com"],
     "esHost":"http://localhost:9200",
-    "esEndpoints":["/example/example"],
-    "uniqueKey":"attributes.hashCode"
+    "endpoints":{"/test/test": "attributes.hashCode", "/another/test":"hashCode"}
 }
