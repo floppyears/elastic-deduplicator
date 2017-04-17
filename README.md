@@ -11,7 +11,9 @@ If more than one document shares the same field ([specified in configuration-exa
 Deduplicator uses SSH to execute curl commands on a remote host running an Elastic Search instance. You can specify multiple hosts and ES indicies. 
 
 ## Instructions
-1. Save configuration-example.json as configuration.json and modify it to suit your environment. "uniqueKey" will be what is used to define a document as a duplicate.
+1. Save configuration-example.json as configuration.json and modify it to suit your environment. 
+"endpoints" is an object where each key is an Elastic Search type and index, and its value is the unique key that will be used to check whether a document is a duplicate. 
+If a document shares the value of the unique key with one or more documents, all documents will be deleted except for one of them.
 2. Run the python script and pass configuration.json as an argument.
 ```
 cd elastic-deduplicator
