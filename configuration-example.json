@@ -1,0 +1,9 @@
+{
+    "sshUser":"user",
+    "sshHosts":[
+        "host.com",
+        "another.host.com"],
+    "esHost":"http://localhost:9200",
+    "esEndpoints":["/example/example"],
+    "uniqueKey":"attributes.hashCode"
+}
