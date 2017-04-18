@@ -19,3 +19,7 @@ If a document shares the value of the unique key with one or more documents, all
 cd elastic-deduplicator
 python deduplicator.py -i configuration.json
 ```
+
+Improvements:
+* Could be smarter about deleting a batch of documents but some versions of Elastic Search don't support \_delete\_by\_query. 
+Some versions do support this functionality (or even as a plugin), but the query syntax, HTTP method, and URI can differ.
