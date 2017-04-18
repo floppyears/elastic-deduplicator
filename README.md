@@ -8,7 +8,12 @@ Deduplicator works by finding documents that share a value for a field in their 
 
 If more than one document shares the same field ([specified in configuration-example.json](configuration-example.json)), n-1 documents are deleted where "n" equals all instances of the document. Thus, one document is left over.
 
-Deduplicator uses SSH to execute curl commands on a remote host running an Elastic Search instance. You can specify multiple hosts and ES indicies. 
+Deduplicator uses SSH to execute curl commands on a remote host running an Elastic Search instance. You can specify multiple hosts and ES indicies.
+
+## Exit Codes
+0: No duplicates were found, all commands ran successfully.
+1: There was a problem executing a command. Duplicates may have been found and deleted on one or more hosts.
+2: Duplicates were found and deleted, all commands ran successfully. 
 
 ## Instructions
 1. Save configuration-example.json as configuration.json and modify it to suit your environment. 
