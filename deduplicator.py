@@ -99,6 +99,9 @@ if __name__ == '__main__':
     summary = {}
     
     deduplicate()
+    
+    print
+    print "Summary:"
     pretty_print(summary)
 
     sys.exit(exit_code)
