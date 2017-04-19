@@ -6,7 +6,7 @@ Have you ever had duplicate documents in Elastic Search but didn't want delete a
 
 Deduplicator works by finding documents that share a value for a field in their \_source. It's recommended that the field used is numeric, not a string. Using a field that contains text might require extra Elastic Search configuration. [See this article on field data in Elastic Search for more details.](https://www.elastic.co/guide/en/elasticsearch/reference/current/fielddata.html)
 
-If more than one document shares the same field ([specified in configuration-example.json](configuration-example.json)), n-1 documents are deleted where "n" equals all instances of the document. Thus, one document is left over.
+If more than one document shares the same field ([specified in configuration-example.json](configuration-example.json)), all documents will be deleted.
 
 Deduplicator uses SSH to execute curl commands on a remote host running an Elastic Search instance. You can specify multiple hosts and ES indicies.
 
@@ -28,3 +28,4 @@ python deduplicator.py -i configuration.json
 ## Improvements
 * Could be smarter about deleting a batch of documents but some versions of Elastic Search don't support \_delete\_by\_query. 
 Some versions do support this functionality (or even as a plugin), but the query syntax, HTTP method, and URI can differ.
+* Deletes all instances of a document that has duplicates. We should be deleting all but one, but this would require knowing which document is the newest.

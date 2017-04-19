@@ -39,7 +39,7 @@ def identify_duplicates(host, endpoint, es_response):
         buckets = es_response['aggregations']['duplicateCount']['buckets']
         for bucket in buckets:
             total_docs = bucket['duplicateDocuments']['hits']['total']
-            for i in range(0, total_docs-1):
+            for i in range(0, total_docs):
                 to_be_deleted.append(bucket['duplicateDocuments']['hits']['hits'][i]['_id'])
         if to_be_deleted:
             delete_duplicates(to_be_deleted, host, endpoint)
